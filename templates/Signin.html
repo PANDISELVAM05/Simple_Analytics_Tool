@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <!-- <link rel="stylesheet" href="Signin.css">
+  <script src="Signin.js" defer></script> -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/Signin.css') }}">
+  <script src="{{ url_for('static', filename='js/Signin.js') }}" defer></script>
+
+</head>
+<body>
+    
+  <div class="main">
+    <div class="login">
+      <h2>LOGIN</h2>
+      <input type="text" id="email" placeholder="Enter your Email"><br>
+      <input type="password" id="password" placeholder="Enter your Password"><br>
+      <button class="login-btn" onclick="handleLogin()">LOGIN</button>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+#detail
+{
+    width: 1230px;
+	height: 50PX;
+    display: flex; 
+    flex: 1; 
+    margin-left: -180px;
+   	margin-top: -7px;
+    padding: 0 0 0 200px;
+    font-weight: bold;
+    background-color:#ededed;
+   
+}
+#detail li 
+{ 
+	list-style: none; 
+	padding: 0 40px; 
+    margin-left: 0px;
+	margin-top: 15px;
+}
+#detail li a 
+{ 
+    text-decoration: none;
+	font-size: 17px; 
+	font-weight: bold; 
+    color: black;
+} 
+#detail li ho:hover 
+{ 
+	color: rgb(255, 255, 255); 
+}
+.ho
+{
+    text-decoration: none;
+    color: black;
+}
+.file:hover>.dropdown
+{
+    visibility: hidden;
+}
+
+.dropdown
+{
+    position: absolute;
+    visibility: hidden;
+}
+.dropdown a
+{
+    width: 0px;
+    height: 0px;
+    
+}
+.dropdown li a
+{
+    color: black;
+    margin-left: -60px;
+    margin-top: 0px;
+   
+}
+.slide
+{
+	height:728px;
+	width:60px;
+	position:absolute;
+	background-color:#ededed;
+	padding:0px;
+	margin-left: -7px;
+    margin-top: -17px;
+    font-size: 20px;
+}
+.growth
+{
+    width: 40px;
+    height: 40px;
+    margin-top: 28px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.growth:hover
+{
+    background-color: #838383;
+}
+.table
+{
+    width: 40px;
+    height: 40px;
+    margin-top: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.table:hover
+{
+    background-color: #838383;
+}
+.data
+{
+	height:736px;
+	width:240px;
+	position:absolute;
+	background-color:#838383;
+	padding:0px;
+	margin-left: 1246px;
+    margin-top: -68px;
+    font-size: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.da
+{
+    margin-left: 10px;
+    margin-top: -30px;
+    display: flex;
+}
+.tabledata
+{
+    width: 80px;
+    height: 80px;
+    margin-top: 50px;
+    margin-left: 90px;
+}
+.loaddata
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+.right
+{
+    width: 20px;
+    height:20px;
+    margin-top: -30px;
+    margin-left: 215px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+#search input[type=text] 
+{
+    width: 220px;
+    height:30px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    border-width: 1px;
+    border-color:rgb(188, 188, 188);
+    outline:rgb(255, 255, 255);
+    padding: 0px;
+}
+#search 
+{
+	padding:20px;
+   	margin:-47px -5px;
+   	margin-top: -20px;
+	align-items:left;
+}
+.Table
+{
+    margin-top: -282px;
+    margin-left: -1215px;
+    font-size: 18.1px;
+    
+}
+#excel-table {
+    width: 498%;
+    max-height: 725px;
+    display: block;
+    border: 0px;
+     /* Set a fixed height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-collapse: collapse;
+}
+#excel-table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    width: 1195px;
+}
+#excel-table th {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+#excel-table thead {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+    z-index: 1;
+}
+.table-header
+{
+    margin-top: -477px;
+    /* max-height: 410px; */
+    height: 455px;
+    width: 225px;
+    overflow-y: auto;
+    position: sticky;
+    padding: 10px;
+    line-height: 40px;
+    margin-left: 0px;
+    border-radius: 10px;
+    background-color: #838383;
+    border: 1px solid #838383;
+    /* background-color: aqua; */
+}
+.table-bordered
+{
+    width: 100px;
+    margin-left: -1215px;
+    margin-top: -232px;
+}

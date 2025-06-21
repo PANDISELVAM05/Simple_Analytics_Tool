@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- <link rel="stylesheet" href="Report.css">
+    <script src="Report.js" defer></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/Report.css') }}">
+    <script src="{{ url_for('static', filename='js/Report.js') }}" defer></script>
+    <!-- <script src="{{ url_for('static', filename='js/Report1.js') }}" defer></script> -->
+
+
+</head>
+<body>
+    <nav>
+		<ul id="detail"> 
+			<li class="file"> <a href="#"> FILE </a>
+                <ul class="dropdown">
+                    <li><a href="#">Save</a></li>
+                    <li><a href="#">Save As</a></li>
+                    <li><a href="#">Import</a></li>
+                    <li><a href="#">Export</a></li>
+                </ul>
+            </li>
+            <a href="{{ url_for('home') }}" class="ho"><li>HOME</li> </a> 
+			<li>INSERT</li>
+			<li>VIEW</li>
+		</ul>
+    </nav>
+    <!-- <div class="container">
+        <a href="Report.html">
+            <div class="box1"> 
+                <img src="Image/sqlimage.png" class="sqlimage" />
+                <h3 id="report">Report</h3> 
+            </div>
+        </a>
+        <div class="box2"> 
+            <img src="Image/Excelimage.png" class="Excelimage"/>
+            <h3 id="excel">Excel</h3>
+        </div>
+        <div class="box3">
+
+        </div>
+        <div class="box4">
+
+        </div>
+    </div> -->
+    <div class="slide">
+        <img src="{{ url_for('static', filename='Image/growth.png') }}" class="growth" />
+        <!-- <a href="Table.html"> -->
+        <a href="{{ url_for('table') }}">
+        <img src="{{ url_for('static', filename='Image/table.png') }}" class="table" /></a>
+    </div>
+    <div class="visualization">
+        <img src="{{ url_for('static', filename='Image/left.png') }}" class="left" />
+        <h3 class="vi"> Visualization</h3>
+        <img src="{{ url_for('static', filename='Image/stacked column chart.png') }}" class="stackedcolumnchart" title="stackedcolumn chart" data-chart-type="stacked column"/>
+        <img src="{{ url_for('static', filename='Image/clustered bar chart.png') }}" class="clusteredbarchart" title="clustered bar chart" data-chart-type="clustered bar"/>
+        <img src="{{ url_for('static', filename='Image/clustered column chart.png') }}" class="clusteredcolumnchart" title="clustered column chart" data-chart-type="clustered column"/>
+        <img src="{{ url_for('static', filename='Image/stacked bar chart.png') }}" class="stackedbarchart" title="100% stacked bar chart" data-chart-type="100% stacked bar"/>
+        <img src="{{ url_for('static', filename='Image/stacked column chart.png') }}" class="stackedcolumnchart" title="100% stacked column chart" data-chart-type="100% stacked column"/>
+        <img src="{{ url_for('static', filename='Image/line chart.png') }}" class="linechart" title="line chart" data-chart-type="line"/>
+        <img src="{{ url_for('static', filename='Image/area chart.png') }}" class="areachart" title="area chart" data-chart-type="area"/>
+        <img src="{{ url_for('static', filename='Image/stacked area chart.png') }}" class="stackareachart" title="stacked area chart" data-chart-type="stacked area"/>
+        <img src="{{ url_for('static', filename='Image/stacked area chart.png') }}" class="stackedareachart" title="100% stacked area chart" data-chart-type="100% stacked area"/>
+        <img src="{{ url_for('static', filename='Image/line and stacked column chart.png') }}" class="lineandstackedcolumnchart" title="line and stacked column chart" data-chart-type="line and stacked column"/>
+        <img src="{{ url_for('static', filename='Image/line and clustered column chart.png') }}" class="lineandclusteredcolumnchart" title="line and clustered column chart" data-chart-type="line and clustered column"/>
+        <img src="{{ url_for('static', filename='Image/ribbon chart.png') }}" title="ribbon chart" data-chart-type="ribbon"/>
+        <img src="{{ url_for('static', filename='Image/waterfall chart.png') }}" title="waterfall chart" data-chart-type="waterfall"/>
+        <img src="{{ url_for('static', filename='Image/funnel.png') }}" class="funnel" title="funnel" data-chart-type="funnel"/>
+        <img src="{{ url_for('static', filename='Image/scatter chart.png') }}" class="scatterchart" title="scatter chart" data-chart-type="scatter"/>
+        <img src="{{ url_for('static', filename='Image/pie chart.png') }}" class="piechart" title="pie chart" data-chart-type="pie"/>
+        <img src="{{ url_for('static', filename='Image/donut chart.png') }}"class="donutchart" title="donut chart" data-chart-type="donut"/>
+
+        <h4 class="vi-a">Analytics</h4>
+        <select id="analytics-box" class="analytics-box">
+            <option value="" disabled selected>Select Analytics</option>
+            <option value="Data Analytics" id="data-analytics">Data Analytics</option>
+            <option value="Business Analytics" id="business-analytics">Business Analytics</option>
+        </select>
+        <div id="selected-content"></div>
+        <h4 class="vi-a">Algorithm</h4>
+        <select id="analytics-box" class="analytics-box">
+            <option value="" disabled selected>Select Algorithm</option>
+            <option value="Data Analytics" id="Linear Regression">Linear Regression</option>
+            <option value="Business Analytics" id="Logistic Regression">Logistic Regression</option>
+            <option value="Data Analytics" id="K-Means Clustering">K-Means Clustering</option>
+            <option value="Business Analytics" id="KNN">KNN</option>
+            <option value="Data Analytics" id="Support Vector Machine">Support Vector Machine</option>
+            <option value="Business Analytics" id="Naive Bayes">Naive Bayes</option>
+            <option value="Business Analytics" id="Principal Component Analysis">Principal Component Analysis</option>
+            <option value="Business Analytics" id="Neural Network">Neural Network</option>
+            <option value="Data Analytics" id="Decision Tree">Decision Tree</option>
+            <option value="Business Analytics" id="Random Forest">Random Forest</option>
+        </select>
+    </div>
+    <div class="data">
+        <img src="{{ url_for('static', filename='Image/left.png') }}" class="right" />
+        <h3 class="da"> Data</h3>
+        <div id="search"> 
+            <form action="#">
+                <input type="text" placeholder="search data" name="search">
+                <!--<button>
+                    <i class="fa fa-search" style="font-size: 500px;"></i>
+                </button>-->  
+            </form>
+        </div>
+        <img src="{{ url_for('static', filename='Image/get data.png') }}" class="tabledata" />
+        <p class="loaddata">You haven't loaded any data yet </p>
+        <input type="file" name="" id="file-input" accept=".csv" required multiple style="cursor: pointer;">
+
+        <!-- <div id="headers-container">
+            
+        </div> -->
+        <!-- <table class="Table Table-bordered" id="excel-table" border="1">
+        </table> -->
+        <div id="head-container" class="box">
+            <!-- <h4>Select Columns for Analysis (Minimum 2)</h4> -->
+            <div id="checkboxes-container"></div>
+        </div>
+        <button id="analyze-button">Analyze</button>
+
+    </div>
+    <div class="result">
+        
+    </div>
+    
+
+    <div id="blueprint-error" class="popupmessage">
+        ❌ Blueprint image not found!
+    </div>
+
+
+    <script>
+
+
+//         document.addEventListener('DOMContentLoaded', () => {
+//     const fileInput = document.getElementById('file-input');
+//     const resultDiv = document.querySelector('.result');
+//     const checkboxesContainer = document.getElementById('checkboxes-container');
+//     let headers = [];
+
+//     fileInput.addEventListener('change', async (event) => {
+//         const file = event.target.files[0];
+//         if (!file) return;
+
+//         const formData = new FormData();
+//         formData.append('file', file);
+
+//         try {
+//             const response = await fetch('http://127.0.0.1:5000/analyze', {
+//                 method: 'POST',
+//                 body: formData
+//             });
+
+//             if (!response.ok) {
+//                 const errorData = await response.json();
+//                 resultDiv.innerHTML = `<p style="color:red;">Error: ${errorData.error}</p>`;
+//                 return;
+//             }
+
+//             const headersResponse = await fetch('http://127.0.0.1:5000/headers');
+//             headers = await headersResponse.json();
+
+//             // Show Correlation Matrix
+//             const heatmapImg = document.createElement('img');
+//             heatmapImg.src = 'static/correlation_matrix.png?' + new Date().getTime();
+//             heatmapImg.alt = 'Correlation Matrix';
+//             heatmapImg.style.maxWidth = '100%';
+//             heatmapImg.style.marginTop = '20px';
+//             heatmapImg.style.marginLeft = '300px';
+//             resultDiv.innerHTML = '<h3>Correlation Matrix</h3>';
+//             resultDiv.appendChild(heatmapImg);
+
+//             // Show checkboxes
+//             checkboxesContainer.innerHTML = '';
+//             headers.forEach(header => {
+//                 const label = document.createElement('label');
+//                 label.innerHTML = `<input type="checkbox" value="${header}"> ${header}`;
+//                 // label.style.marginTop = '-100px';
+//                 checkboxesContainer.appendChild(label);
+//                 checkboxesContainer.appendChild(document.createElement('br'));
+//             });
+//         } catch (err) {
+//             resultDiv.innerHTML = `<p style="color:red;">Request failed: ${err.message}</p>`;
+//         }
+//     });
+
+//     document.getElementById("analyze-button").addEventListener("click", async () => {
+//         const analyticsSelect = document.querySelectorAll('#analytics-box')[0];
+//         const algorithmSelect = document.querySelectorAll('#analytics-box')[1];
+
+//         const selectedAnalytics = analyticsSelect.value;
+//         const selectedAlgorithm = algorithmSelect.value;
+
+//         const selectedColumns = Array.from(checkboxesContainer.querySelectorAll('input[type="checkbox"]:checked'))
+//                                      .map(cb => cb.value);
+
+//         if (!selectedAnalytics || !selectedAlgorithm || selectedColumns.length < 2) {
+//             // resultDiv.innerHTML = `<p style="color:red;">Please select analytics, algorithm, and at least 2 columns.</p>`;
+//             return;
+//         }
+
+//         try {
+//             const response = await fetch('http://127.0.0.1:5000/generate_charts', {
+//                 method: "POST",
+//                 headers: { "Content-Type": "application/json" },
+//                 body: JSON.stringify({
+//                     analytics: selectedAnalytics,
+//                     algorithm: selectedAlgorithm,
+//                     columns: selectedColumns
+//                 })
+//             });
+
+//             const data = await response.json();
+//             if (data.success) {
+//                 resultDiv.innerHTML = '<h3 style="margin-left:400px;">Generated Charts</h3>';
+//                 ['pie', 'bar', 'donut'].forEach(chart => {
+//                     const img = document.createElement('img');
+//                     img.src = `static/charts/${chart}.png?${new Date().getTime()}`;
+//                     img.style.maxWidth = '600px';
+//                     img.style.margin = '10px';
+//                     img.style.marginLeft = '300px';
+//                     resultDiv.appendChild(img);
+//                 });
+//             } else {
+//                 resultDiv.innerHTML = `<p style="color:red;">Error: ${data.error}</p>`;
+//             }
+//         } catch (err) {
+//             resultDiv.innerHTML = `<p style="color:red;">Request failed: ${err.message}</p>`;
+//         }
+//     });
+// });
+
+// // Reload checkboxes if CSV was previously uploaded
+// window.addEventListener("DOMContentLoaded", async () => {
+//     const checkboxesContainer = document.getElementById("checkboxes-container");
+
+//     try {
+//         const response = await fetch('http://127.0.0.1:5000/headers');
+//         const headers = await response.json();
+
+//         if (Array.isArray(headers) && headers.length > 0) {
+//             checkboxesContainer.innerHTML = '';
+//             const heading = document.createElement('h4');
+//             // heading.textContent = 'Select Columns for Analysis (Minimum 2)';
+//             checkboxesContainer.appendChild(heading);
+
+//             headers.forEach(header => {
+//                 const label = document.createElement('label');
+//                 label.innerHTML = `<input type="checkbox" value="${header}"> ${header}`;
+//                 // label.style.marginTop = '100px';
+//                 // label.style.marginLeft = '100px';
+//                 checkboxesContainer.appendChild(label);
+//                 checkboxesContainer.appendChild(document.createElement('br'));
+//             });
+//         }
+//     } catch (err) {
+//         console.error("Error fetching headers on page load:", err);
+//     }
+// });
+
+// // Reload correlation matrix image if it exists
+// window.addEventListener("DOMContentLoaded", async () => {
+//     const resultDiv = document.querySelector(".result");
+//     const img = new Image();
+//     img.src = 'static/correlation_matrix.png?' + new Date().getTime();
+//     img.alt = "Correlation Matrix";
+//     img.style.maxWidth = '100%';
+//     img.style.height = '400px';
+//     img.style.marginLeft = '200px';
+//     img.style.marginTop = '20px';
+
+//     // Check if the image exists on the server
+//     fetch(img.src, { method: 'HEAD' }).then(res => {
+//         if (res.ok) {
+//             const title = document.createElement('h3');
+//             // title.textContent = 'Correlation Matrix';
+//             resultDiv.innerHTML = '';
+//             resultDiv.appendChild(title);
+//             resultDiv.appendChild(img);
+//         }
+//     }).catch(err => {
+//         console.warn("Correlation matrix not found after reload:", err);
+//     });
+// });
+// window.addEventListener("DOMContentLoaded", async () => {
+//     const resultDiv = document.querySelector(".result");
+
+//     // Reload Correlation Matrix if exists
+//     const correlationImg = new Image();
+//     correlationImg.src = 'static/correlation_matrix.png?' + new Date().getTime();
+//     correlationImg.alt = "Correlation Matrix";
+//     correlationImg.style.maxWidth = '100%';
+//     correlationImg.style.height = '400px';
+//     correlationImg.style.marginLeft = '200px';
+//     correlationImg.style.marginTop = '20px';
+
+//     let anyContentLoaded = false;
+
+//     try {
+//         const correlationRes = await fetch(correlationImg.src, { method: 'HEAD' });
+//         if (correlationRes.ok) {
+//             const title = document.createElement('h3');
+//             title.textContent = 'Correlation Matrix';
+//             resultDiv.innerHTML = '';
+//             resultDiv.appendChild(title);
+//             resultDiv.appendChild(correlationImg);
+//             anyContentLoaded = true;
+//         }
+//     } catch (err) {
+//         console.warn("Correlation matrix not found after reload:", err);
+//     }
+
+//     // Reload Previously Generated Charts if exist
+//     const chartTypes = ['pie', 'bar', 'donut'];
+//     let chartsFound = false;
+
+//     for (const chart of chartTypes) {
+//         const img = new Image();
+//         img.src = `static/charts/${chart}.png?` + new Date().getTime();
+//         img.alt = `${chart} chart`;
+//         img.style.maxWidth = '600px';
+//         img.style.margin = '10px';
+//         img.style.marginLeft = '300px';
+
+//         try {
+//             const chartRes = await fetch(img.src, { method: 'HEAD' });
+//             if (chartRes.ok) {
+//                 if (!chartsFound) {
+//                     const heading = document.createElement('h3');
+//                     heading.textContent = 'Generated Charts';
+//                     heading.style.marginLeft = '400px';
+
+//                     if (!anyContentLoaded) resultDiv.innerHTML = '';
+//                     resultDiv.appendChild(heading);
+//                     chartsFound = true;
+//                 }
+//                 resultDiv.appendChild(img);
+//             }
+//         } catch (err) {
+//             console.warn(`Chart ${chart} not found:`, err);
+//         }
+//     }
+// });
+
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const fileInput = document.getElementById('file-input');
+    const resultDiv = document.querySelector('.result');
+    const checkboxesContainer = document.getElementById('checkboxes-container');
+    const analyzeButton = document.getElementById('analyze-button');
+
+    let headers = [];
+
+    // Handle file upload
+    fileInput.addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/analyze', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                resultDiv.innerHTML = `<p style="color:red;">Error: ${errorData.error}</p>`;
+                return;
+            }
+
+            // Load headers for checkbox options
+            const headersResponse = await fetch('http://127.0.0.1:5000/headers');
+            headers = await headersResponse.json();
+
+            // Show correlation matrix
+            const heatmapImg = new Image();
+            heatmapImg.src = 'static/correlation_matrix.png?' + new Date().getTime();
+            heatmapImg.alt = 'Correlation Matrix';
+            heatmapImg.style.maxWidth = '100%';
+            heatmapImg.style.marginTop = '20px';
+            heatmapImg.style.marginLeft = '300px';
+
+            resultDiv.innerHTML = '<h3>Correlation Matrix</h3>';
+            resultDiv.appendChild(heatmapImg);
+
+            // Render checkboxes
+            checkboxesContainer.innerHTML = '';
+            headers.forEach(header => {
+                const label = document.createElement('label');
+                label.innerHTML = `<input type="checkbox" value="${header}"> ${header}`;
+                checkboxesContainer.appendChild(label);
+                checkboxesContainer.appendChild(document.createElement('br'));
+            });
+        } catch (err) {
+            resultDiv.innerHTML = `<p style="color:red;">Request failed: ${err.message}</p>`;
+        }
+    });
+
+    // Handle chart generation on button click
+    analyzeButton.addEventListener('click', async () => {
+        const analyticsSelect = document.querySelectorAll('#analytics-box')[0];
+        const algorithmSelect = document.querySelectorAll('#analytics-box')[1];
+
+        const selectedAnalytics = analyticsSelect.value;
+        const selectedAlgorithm = algorithmSelect.value;
+
+        const selectedColumns = Array.from(
+            checkboxesContainer.querySelectorAll('input[type="checkbox"]:checked')
+        ).map(cb => cb.value);
+
+        if (!selectedAnalytics || !selectedAlgorithm || selectedColumns.length < 2) return;
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/generate_charts', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    analytics: selectedAnalytics,
+                    algorithm: selectedAlgorithm,
+                    columns: selectedColumns
+                })
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                resultDiv.innerHTML = '<h3 style="margin-left:400px;">Generated Charts</h3>';
+                ['pie', 'bar', 'donut'].forEach(chart => {
+                    const img = new Image();
+                    img.src = `static/charts/${chart}.png?${new Date().getTime()}`;
+                    img.style.maxWidth = '600px';
+                    img.style.margin = '10px';
+                    img.style.marginLeft = '300px';
+                    resultDiv.appendChild(img);
+                });
+            } else {
+                resultDiv.innerHTML = `<p style="color:red;">Error: ${data.error}</p>`;
+            }
+        } catch (err) {
+            resultDiv.innerHTML = `<p style="color:red;">Request failed: ${err.message}</p>`;
+        }
+    });
+
+    // Reload checkboxes if headers already available
+    try {
+        const headersRes = await fetch('http://127.0.0.1:5000/headers');
+        const storedHeaders = await headersRes.json();
+
+        if (Array.isArray(storedHeaders) && storedHeaders.length > 0) {
+            checkboxesContainer.innerHTML = '';
+            storedHeaders.forEach(header => {
+                const label = document.createElement('label');
+                label.innerHTML = `<input type="checkbox" value="${header}"> ${header}`;
+                checkboxesContainer.appendChild(label);
+                checkboxesContainer.appendChild(document.createElement('br'));
+            });
+        }
+    } catch (err) {
+        console.error("Error loading stored headers:", err);
+    }
+
+    // Reload correlation matrix and charts if already exist
+    let anyContentLoaded = false;
+
+    const correlationImg = new Image();
+    correlationImg.src = 'static/correlation_matrix.png?' + new Date().getTime();
+    correlationImg.alt = "Correlation Matrix";
+    correlationImg.style.maxWidth = '100%';
+    correlationImg.style.height = '400px';
+    correlationImg.style.marginLeft = '200px';
+    correlationImg.style.marginTop = '20px';
+
+    try {
+        const res = await fetch(correlationImg.src, { method: 'HEAD' });
+        if (res.ok) {
+            const title = document.createElement('h3');
+            title.textContent = 'Correlation Matrix';
+            resultDiv.innerHTML = '';
+            resultDiv.appendChild(title);
+            resultDiv.appendChild(correlationImg);
+            anyContentLoaded = true;
+        }
+    } catch (err) {
+        console.warn("Correlation matrix not found on reload:", err);
+    }
+
+    // Reload previously generated charts
+    const chartTypes = ['pie', 'bar', 'donut'];
+    let chartsFound = false;
+
+    for (const chart of chartTypes) {
+        const img = new Image();
+        img.src = `static/charts/${chart}.png?` + new Date().getTime();
+        img.alt = `${chart} chart`;
+        img.style.maxWidth = '600px';
+        img.style.margin = '10px';
+        img.style.marginLeft = '300px';
+
+        try {
+            const chartRes = await fetch(img.src, { method: 'HEAD' });
+            if (chartRes.ok) {
+                if (!chartsFound) {
+                    const heading = document.createElement('h3');
+                    heading.textContent = 'Generated Charts';
+                    heading.style.marginLeft = '400px';
+                    if (!anyContentLoaded) resultDiv.innerHTML = '';
+                    resultDiv.appendChild(heading);
+                    chartsFound = true;
+                }
+                resultDiv.appendChild(img);
+            }
+        } catch (err) {
+            console.warn(`Chart ${chart} not found:`, err);
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
+
+    
+    

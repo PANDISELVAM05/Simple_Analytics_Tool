@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup</title>
+  <!-- <link rel="stylesheet" href="signup.css">
+  <script src="Signup.js" defer></script> -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/Signup.css') }}">
+  <script src="{{ url_for('static', filename='js/Signup.js') }}" defer></script>
+
+</head>
+<body>
+    
+  <div class="main">
+    <div class="signup">
+      <h2>SIGNUP</h2>
+      <input type="text" id="username" placeholder="Enter your Username"><br>
+      <input type="text" id="email" placeholder="Enter your Email"><br>
+      <input type="password" id="password" placeholder="Enter your Password"><br>
+      <button onclick="handleSignup()">SIGNUP</button>
+    </div>
+  </div>
+
+</body>
+</html>

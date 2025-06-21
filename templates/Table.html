@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <!-- <link rel="stylesheet" href="Table.css">
+    <script src="Table.js" defer></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/Table.css') }}">
+    <script src="{{ url_for('static', filename='js/Table.js') }}" defer></script>
+
+
+</head>
+<body>
+    
+    <nav>
+		<ul id="detail"> 
+			<li class="file"> <a href="#"> FILE </a>
+                <ul class="dropdown">
+                    <li><a href="#">Save</a></li>
+                    <li><a href="#">Save As</a></li>
+                    <li><a href="#">Import</a></li>
+                    <li><a href="#">Export</a></li>
+                </ul>
+            </li>
+            <a href="Home.html" class="ho"><li>HOME</li> </a> 
+			<li>INSERT</li>
+			<li>VIEW</li>
+		</ul>
+        
+    </nav>
+    <div class="slide">
+        <!-- <a href="Report.html"> <img src="Image/growth.png" class="growth" /> </a> -->
+        <a href="{{ url_for('report') }}"><img src="{{ url_for('static', filename='Image/growth.png') }}" class="growth" /></a>
+        <img src="{{ url_for('static', filename='Image/table.png') }}" class="table" />
+    </div>
+    <div class="data">
+        <img src="{{ url_for('static', filename='Image/left.png') }}" class="right"/>
+        <h3 class="da"> Data</h3>
+        <div id="search"> 
+            <form action="#">
+                <input type="text" placeholder="search data" name="search">
+                <!--<button>
+                    <i class="fa fa-search" style="font-size: 500px;"></i>
+                </button>-->  
+            </form>
+        </div>
+        <img src="{{ url_for('static', filename='Image/get data.png') }}" class="tabledata" />
+        <p class="loaddata">You haven't loaded any data yet </p>
+        <input type="file" name="" id="file-input" accept=".csv" required multiple>
+        <div id="table-container">
+           <table class="table-bordered" id="excel-table" border="1">
+                
+            </table> 
+        </div>
+        <div id="header-display" class="table-header">
+            <!-- <h4>CSV Headers:</h4> -->
+            <ul></ul>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>

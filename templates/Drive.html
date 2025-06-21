@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive</title>
+    <!-- <link rel="stylesheet" href="Drive.css"> -->
+    
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/Drive.css') }}">
+    <!-- <script src="{{ url_for('static', filename='js/Drive.js') }}" defer></script> -->
+
+</head>
+<body>
+    
+    <div class="slide">
+        <ul>    
+            <!-- <li> <a href="Home.html"> <i ></i> Home </a> </li><br>
+            <li> <a href="#"> <i ></i> Open </a> </li><br>
+            <li> <a href="#" class="signin"> <i ></i> Sign In </a> </li>
+            <li> <a href="#" class="signup"> <i ></i> Sign Up </a> </li> -->
+            <li> <a href="{{ url_for('home') }}"> Home </a> </li><br>
+            <li> <a href="{{ url_for('open') }}" > Open </a> </li><br>
+            <li> <a href="{{ url_for('signin') }}" class="signin"> Sign In </a> </li>
+            <li> <a href="{{ url_for('signup') }}" class="signup"> Sign Up </a> </li>
+        </ul>
+    </div>
+    <div class="slide1">
+        <ul>    
+            <li> <a href="{{ url_for('#') }}" > <i ></i> Recent </a> </li><br>
+            <li> <a href="{{ url_for('drive') }}" > <i ></i> Drive </a> </li><br>
+        </ul>
+    </div>
+    <p class="drive"> drive mounted </p>
+
+</body>
+</html>
